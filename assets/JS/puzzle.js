@@ -19,8 +19,10 @@ let countTime = 0;
 moves.innerHTML = `<div><p>Moves:</p><p>0</p></div><div><p>Time:</p><p>00:00:00</p></div>`
 const timer = moves.lastChild.lastChild
 const audio = new Audio("assets/audio/zvuk.mp3");
-
-// document.body.append(audio)
+const curtain = document.createElement('div');
+curtain.className = 'curtain';
+curtain.style.width = 100 + '%';
+curtain.style.height = window.innerHeight + 'px'
 
 window.onload = function(){
         let hours = 0;
@@ -120,6 +122,7 @@ fragment16.innerHTML = '<p>15</p>'
 fragment16.setAttribute('id', 'invisible')
 
 //Секция с кнопками, Вёрстка
+document.body.append(curtain)
 document.body.append(buttonsSection);
 document.body.append(moves)
 buttonsSection.append(start);
@@ -146,42 +149,59 @@ function animate4x4(){
         gameFrame.replaceChild(item1, item2)
         gameFrame.insertBefore(item2, item1.nextSibling.nextSibling.nextSibling.nextSibling)
        }  
+       curtain.style.display = 'none';
+    }
+
+    function shutdownEventListener(eventListener){
+        let fragments = document.querySelectorAll('.fragment')
+        fragments.forEach((fragment, index)=>{
+            fragment.removeEventListener('click', eventListener)
+        })
     }
 
 
-    fragments.forEach((fragment, index)=>{
+    gameFrame.childNodes.forEach((fragment, index)=>{
         fragment.addEventListener('click', function eventListener() {
             audio.play()
             if(fragment.nextSibling && fragment.nextSibling.hasAttribute('id')){
-                fragment.style.transition = 'all 1s ease-out';
-                fragment.style.transform = 'translateX(100%)'
+                fragment.style.transition = 'all 0.4s ease-out';
+                fragment.style.transform = 'translateX(105%)'
+                curtain.style.display = 'block'
                 setTimeout(()=>{
                     fragment.style.transform = 'translateX(0%)'
-                    orderChange(fragment, fragment.nextSibling)          
+                    orderChange(fragment, fragment.nextSibling)
+                    fragment.addEventListener('click', eventListener)          
                 }, 1000)
             }else if(fragment.previousSibling && fragment.previousSibling.hasAttribute('id')){
-                fragment.style.transition = 'all 1s ease-out';
-                fragment.style.transform = 'translateX(-100%)'
+                fragment.style.transition = 'all 0.4s ease-out';
+                fragment.style.transform = 'translateX(-105%)'
+                curtain.style.display = 'block'
                 setTimeout(()=>{
                     fragment.style.transition = 'none'
                     fragment.style.transform = 'translateX(0%)'
+                    curtain.style.display = 'block'
                     orderChange(fragment, fragment.previousSibling)
+                    fragment.addEventListener('click', eventListener)   
                 }, 1000)
             }else if(fragment.nextSibling.nextSibling.nextSibling.nextSibling && fragment.nextSibling.nextSibling.nextSibling.nextSibling.hasAttribute('id')){
-                fragment.style.transition = 'all 1s ease-out';
-                fragment.style.transform = 'translateY(100%)'
+                fragment.style.transition = 'all 0.4s ease-out';
+                fragment.style.transform = 'translateY(105%)'
+                curtain.style.display = 'block'
                 setTimeout(()=>{
                     fragment.style.transform = 'translateY(0%)'
                     orderChange(fragment, fragment.nextSibling.nextSibling.nextSibling.nextSibling)
+                    fragment.addEventListener('click', eventListener)  
                 }, 1000)
 
             }else if(fragment.previousSibling.previousSibling.previousSibling.previousSibling && fragment.previousSibling.previousSibling.previousSibling.previousSibling.hasAttribute('id')){
-                fragment.style.transition = 'all 1s ease-out';
-                fragment.style.transform = 'translateY(-100%)'
+                fragment.style.transition = 'all 0.4s ease-out';
+                fragment.style.transform = 'translateY(-105%)'
+                curtain.style.display = 'block'
                 setTimeout(()=>{
                     fragment.style.transition = 'none'
                     fragment.style.transform = 'translateY(0%)'
                     orderChange(fragment, fragment.previousSibling.previousSibling.previousSibling.previousSibling)
+                    fragment.addEventListener('click', eventListener)  
                 }, 1000)
 
             }
@@ -220,8 +240,6 @@ function puzzle4x4(){
 
     for(let arr of randomedArray){
         gameFrame.append(arr)
-        // arr.style.order = counter;
-        // counter += 1;
     }
     extraBlocks(4)
     animate4x4()
