@@ -15,7 +15,47 @@ results.innerHTML = 'Results'
 const moves = document.createElement('div')
 moves.className = 'moves-section'
 let countMoves = 0;
-moves.innerHTML = `<div><p>Moves:</p><p>0</p></div><div><p>Time:</p><p>00:00</p></div>`
+let countTime = 0;
+moves.innerHTML = `<div><p>Moves:</p><p>0</p></div><div><p>Time:</p><p>00:00:00</p></div>`
+const timer = moves.lastChild.lastChild
+const audio = new Audio("assets/audio/zvuk.mp3");
+
+// document.body.append(audio)
+
+window.onload = function(){
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0
+    window.setInterval(function() {
+        seconds += 1;
+        if(seconds == 60){
+            seconds = 0;
+            minutes += 1;
+        }
+
+        if(minutes == 60){
+            minutes = 0
+            hours += 1
+        }
+
+        function clockMaker(hours, minutes, seconds){
+            if(hours < 10) hours = '0' + hours;
+            if(minutes < 10) minutes = '0' + minutes;
+            if(seconds < 10) seconds = '0' + seconds;
+            let clock = hours + ':' + minutes + ':' + seconds
+            return clock;
+        }
+        
+        let clock = clockMaker(hours, minutes, seconds)
+
+        
+        timer.innerHTML = clock;
+    }, 1000)
+}
+
+
+
+
 const sizes = document.createElement('div')
 sizes.className = 'sizes'
 sizes.innerHTML = "<div><p class='frame-size'>Frame size:</p><p class='frame-size'>4x4</p></div>"
@@ -91,6 +131,8 @@ buttonsSection.append(results);
 function animate4x4(){
     let fragments = [...document.querySelectorAll('.fragment')];
     function orderChange(item1, item2){
+        countMoves += 1;
+        moves.firstChild.firstChild.nextSibling.innerHTML = countMoves;
        if(item1.nextSibling === item2){
         gameFrame.replaceChild(item1, item2)
         gameFrame.insertBefore(item2, item1)
@@ -104,14 +146,12 @@ function animate4x4(){
         gameFrame.replaceChild(item1, item2)
         gameFrame.insertBefore(item2, item1.nextSibling.nextSibling.nextSibling.nextSibling)
        }  
-
     }
 
 
     fragments.forEach((fragment, index)=>{
         fragment.addEventListener('click', function eventListener() {
-            countMoves += 1;
-            moves.firstChild.firstChild.nextSibling.innerHTML = countMoves;
+            audio.play()
             if(fragment.nextSibling && fragment.nextSibling.hasAttribute('id')){
                 fragment.style.transition = 'all 1s ease-out';
                 fragment.style.transform = 'translateX(100%)'
