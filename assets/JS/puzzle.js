@@ -21,7 +21,7 @@ sizes.className = 'sizes'
 sizes.innerHTML = "<div><p class='frame-size'>Frame size:</p><p class='frame-size'>4x4</p></div>"
 const otherSizes = document.createElement('div')
 otherSizes.className = 'other-sizes';
-otherSizes.innerHTML = "<ul><li>3x3</li><li>4x4</li><li>5x5</li><li>6x6</li><li>7x7</li><li>8x8</li><ul>"
+otherSizes.innerHTML = "<ul><li>3x3</li><li>4x4</li><li>5x5</li><li>6x6</li><li>7x7</li><li>8x8</li></ul>"
 
 moves.firstChild.firstChild.nextSibling.innerHTML = countMoves;
 
