@@ -45,12 +45,10 @@ sound.onclick = () => {
 
 stopGame.onclick = () => {alert('The game is stopped, press "OK" to continue playing')}
 
-
 window.onload = function(){
         let hours = 0;
         let minutes = 0;
         let seconds = 0
-    window.setInterval(function() {
 
         start.onclick = ()=>{
             
@@ -60,11 +58,12 @@ window.onload = function(){
                 countMoves = 0;
                 moves.firstChild.firstChild.nextSibling.innerHTML = countMoves
                 gameFrame.replaceChildren()
-                puzzle4x4()
-                extraBlocks(4)
+                puzzle3x3()
+                extraBlocks(3)
             
         }
-        
+
+    window.setInterval(function() {
         seconds += 1;
         if(seconds == 60){
             seconds = 0;
@@ -92,19 +91,12 @@ window.onload = function(){
 }
 
 
-
-
 const sizes = document.createElement('div')
 sizes.className = 'sizes'
-sizes.innerHTML = "<div><p class='frame-size'>Frame size:</p><p class='frame-size'>4x4</p></div>"
+sizes.innerHTML = "<div><p class='frame-size'>Frame size:</p><p class='frame-size'>3x3</p></div>"
 const otherSizes = document.createElement('div')
 otherSizes.className = 'other-sizes';
 otherSizes.innerHTML = "<ul><li><a href='3x3.html'>3x3</a></li><li><a href='index.html'>4x4</a></li><li><a href='5x5.html'>5x5</a></li><li><a href='6x6.html'>6x6</a></li><li><a href='7x7.html'>7x7</a></li><li><a href='8x8.html'>8x8</a></li></ul>"
-
-
-const link = document.querySelector('link')
-
-
 
 moves.firstChild.firstChild.nextSibling.innerHTML = countMoves;
 
@@ -159,7 +151,7 @@ fragment14.innerHTML = '<p>14</p>'
 fragment15.className = 'fragment';
 fragment15.innerHTML = '<p>15</p>'
 fragment16.className = 'fragment';
-fragment16.innerHTML = '<p>16</p>'
+fragment16.innerHTML = '<p>15</p>'
 fragment16.setAttribute('id', 'invisible')
 
 //Секция с кнопками, Вёрстка
@@ -184,19 +176,17 @@ function combinationChecker(blocksNumber){
         }else{
             break
         }
+        
     }
-
-    console.log(counter)
     if(counter == gameFrame.childNodes.length - 1){
         alert( `Hooray! You solved the puzzle in ${timer.lastChild.nodeValue} and ${countMoves} moves!`)
         start.click()
         return
     }
     extraBlocks(blocksNumber)
-
 }
 
-function animate4x4(){
+function animate3x3(){
     let fragments = [...document.querySelectorAll('.fragment')];
     function orderChange(item1, item2){
         countMoves += 1;
@@ -207,24 +197,16 @@ function animate4x4(){
        }else if(item1.previousSibling === item2){
         gameFrame.replaceChild(item1, item2)
         gameFrame.insertBefore(item2, item1.nextSibling)
-       }else if([...gameFrame.childNodes].indexOf(item2) === [...gameFrame.childNodes].indexOf(item1) + 4){
+       }else if([...gameFrame.childNodes].indexOf(item2) === [...gameFrame.childNodes].indexOf(item1) + 3){
         gameFrame.replaceChild(item1, item2)
-        gameFrame.insertBefore(item2, item1.previousSibling.previousSibling.previousSibling)
-       }else if([...gameFrame.childNodes].indexOf(item2) === [...gameFrame.children].indexOf(item1) - 4){
+        gameFrame.insertBefore(item2, item1.previousSibling.previousSibling)
+       }else if([...gameFrame.childNodes].indexOf(item2) === [...gameFrame.children].indexOf(item1) - 3){
         gameFrame.replaceChild(item1, item2)
-        gameFrame.insertBefore(item2, item1.nextSibling.nextSibling.nextSibling.nextSibling)
+        gameFrame.insertBefore(item2, item1.nextSibling.nextSibling.nextSibling)
        }  
        curtain.style.display = 'none';
-       combinationChecker(4)
+       combinationChecker(3)
     }
-
-    function shutdownEventListener(eventListener){
-        let fragments = document.querySelectorAll('.fragment')
-        fragments.forEach((fragment, index)=>{
-            fragment.removeEventListener('click', eventListener)
-        })
-    }
-
 
     gameFrame.childNodes.forEach((fragment, index)=>{
         fragment.addEventListener('click', function eventListener() {
@@ -249,24 +231,24 @@ function animate4x4(){
                     orderChange(fragment, fragment.previousSibling)
                     fragment.addEventListener('click', eventListener)   
                 }, 1000)
-            }else if(fragment.nextSibling.nextSibling.nextSibling.nextSibling && fragment.nextSibling.nextSibling.nextSibling.nextSibling.hasAttribute('id')){
+            }else if(fragment.nextSibling.nextSibling.nextSibling && fragment.nextSibling.nextSibling.nextSibling.hasAttribute('id')){
                 fragment.style.transition = 'all 0.4s ease-out';
                 fragment.style.transform = 'translateY(105%)'
                 curtain.style.display = 'block'
                 setTimeout(()=>{
                     fragment.style.transform = 'translateY(0%)'
-                    orderChange(fragment, fragment.nextSibling.nextSibling.nextSibling.nextSibling)
+                    orderChange(fragment, fragment.nextSibling.nextSibling.nextSibling)
                     fragment.addEventListener('click', eventListener)  
                 }, 1000)
 
-            }else if(fragment.previousSibling.previousSibling.previousSibling.previousSibling && fragment.previousSibling.previousSibling.previousSibling.previousSibling.hasAttribute('id')){
+            }else if(fragment.previousSibling.previousSibling.previousSibling && fragment.previousSibling.previousSibling.previousSibling.hasAttribute('id')){
                 fragment.style.transition = 'all 0.4s ease-out';
                 fragment.style.transform = 'translateY(-105%)'
                 curtain.style.display = 'block'
                 setTimeout(()=>{
                     fragment.style.transition = 'none'
                     fragment.style.transform = 'translateY(0%)'
-                    orderChange(fragment, fragment.previousSibling.previousSibling.previousSibling.previousSibling)
+                    orderChange(fragment, fragment.previousSibling.previousSibling.previousSibling)
                     fragment.addEventListener('click', eventListener)  
                 }, 1000)
 
@@ -282,15 +264,15 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min; //Максимум не включается, минимум включается
   }
 
-
-
-function puzzle4x4(){
+function puzzle3x3(){
 
 
     let fragments = [fragment1, fragment2, fragment3, fragment4, fragment5, fragment6, fragment7, fragment8,
-    fragment9, fragment10, fragment11, fragment12, fragment13, fragment14, fragment15, fragment16];
+    fragment9];
+
+    fragments[8].setAttribute('id', 'invisible')
     let min = 0;
-    let max = fragments.length;
+    let max = 9;
 
     let randomedArray = [];
 
@@ -306,7 +288,6 @@ function puzzle4x4(){
         gameFrame.append(arr)
     }
     
-    
 }
 
 function extraBlocks(number){
@@ -316,12 +297,12 @@ function extraBlocks(number){
     }
 }
 
-document.body.append(gameFrame)
-puzzle4x4()
-extraBlocks(4)
-animate4x4()
 
 
+document.body.append(gameFrame);
+puzzle3x3()
+extraBlocks(3)
+animate3x3()
 
 document.body.append(sizes)
 document.body.append(otherSizes)

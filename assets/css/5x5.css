@@ -27,8 +27,8 @@ body{
 }
 
 .fragment{
-    width: 150px;
-    height: 150px;
+    width: 117px;
+    height: 121px;
     border: 1px solid rgb(109, 104, 104);
     margin: 10px 5px;
 }
@@ -49,7 +49,7 @@ body{
 
 .buttons-section{
     display: flex;
-    margin: 20px 0 10px 21vw;
+    margin: 20px 0 10px 260px;
     gap: 5%;
 }
 
@@ -73,7 +73,7 @@ body{
 
 .moves-section{
     display: flex;
-    margin-left: 22vw;;
+    margin-left: 350px;
     gap: 45px;
 }
 
@@ -88,7 +88,7 @@ body{
 
 .sizes{
     display: flex;
-    margin-left: 37vw;
+    margin-left: 400px;
 }
 
 .sizes>div{
@@ -101,7 +101,7 @@ body{
 }
 
 .other-sizes{
-    margin-left: 28vw;
+    margin-left: 318px;
 }
 
 .other-sizes>ul{
@@ -117,119 +117,21 @@ body{
     color: rgb(9, 152, 241);
 }
 
-@media (max-width: 1280px){
-    .curtain{
-        display: none;
-        position: absolute;
-        opacity: 0.7;
-        z-index: 2;
-    }
-    
-    .sound{
-        position: relative;
-        top: 24px;
-        left: 10px;
-        cursor: pointer;
-    }
-    
-    .game-frame{
-        display: flex;
-        flex-wrap: wrap;
-        width: 648px;
-        height: 715px;
-        border: 2px solid;
-        margin: 0 0 0vh 20vw;
-    }
-    
-    .fragment{
-        width: 150px;
-        height: 150px;
-        border: 1px solid rgb(109, 104, 104);
-        margin: 10px 5px;
-    }
-    
-    .fragment:hover{
-        cursor: pointer;
-    }
-    
-    .fragment>p{
-        text-align: center;
-        margin-top: 41px;
-        font-size: 66px;
-    }
-    
-    #invisible{
-        visibility: hidden;
-    }
-    
+@media (min-width: 1281px){
     .buttons-section{
-        display: flex;
-        margin: 20px 0 10px 260px;
-        gap: 5%;
+        margin-left: 21vw;
     }
-    
-    .buttons-section>button{
-        width: 100px;
-        height: 50px;
-        background: rgb(25, 159, 183);
-        border-radius: 27px;
-        border: none;
-        color: white;
-        font-size: 26px;
-    }
-    
-    .buttons-section>button:hover{
-        cursor: pointer;
-    }
-    
-    #active{
-        background:rgb(109, 104, 104);
-    }
-    
+
     .moves-section{
-        display: flex;
-        margin-left: 350px;
-        gap: 45px;
+        margin-left: 25vw;
     }
-    
-    .moves-section>div{
-        display: flex;
-        gap: 5px;
-    }
-    
-    .moves-section>div>p{
-        font-size: 26px;
-    }
-    
+
     .sizes{
-        display: flex;
-        margin-left: 400px;
+        margin-left: 35vw;
     }
-    
-    .sizes>div{
-        display: flex;
-        gap: 15px;
-    }
-    
-    .frame-size{
-        font-size: 20px;
-    }
-    
+
     .other-sizes{
-        margin-left: 318px;
-    }
-    
-    .other-sizes>ul{
-        display: flex;
-        gap: 20px;
-        list-style-type: none;
-        font-size: 26px;
-    }
-    
-    .other-sizes>ul>li:hover{
-        cursor: pointer;
-        text-decoration: underline;
-        color: rgb(9, 152, 241);
+        margin-left: 27vw;
     }
 }
 
@@ -276,7 +178,7 @@ body{
     }
 
     .fragment{
-        width: 136px;
+        width: 108px;
     }
 }
 
@@ -288,9 +190,8 @@ body{
     }
 
     .fragment{
-        width: 136px;
-        width: 112px;
-        height: 112px;
+        width: 88px;
+        height: 85px;
     }
 
     .fragment>p{
@@ -324,9 +225,13 @@ body{
     }
 
     .fragment{
-        width: 98px;
-        width: 98px;
-        height: 112px;
+        width: 76px;
+        height: 85px;
+    }
+
+    .fragment>p{
+        position: relative;
+        bottom: 10px;
     }
 
     .other-sizes{
@@ -342,9 +247,8 @@ body{
     }
 
     .fragment{
-        width: 90px;
-        width: 90px;
-        height: 100px;
+        width: 69px;
+        height: 85px;
     }
 
     .other-sizes{
@@ -368,8 +272,13 @@ body{
     }
 
     .fragment{
-        width: 80px;
-        height: 100px;
+        width: 62px;
+        height: 76px;
+    }
+
+    .fragment>p{
+        font-size: 46px;
+        bottom: 0;
     }
 }
 
@@ -393,12 +302,13 @@ body{
     }
 
     .fragment{
-        width: 60px;
-        height: 60px;
+        width: 48px;
+        height: 45px
     }
 
     .fragment>p{
         font-size: 26px;
+        bottom: 10px;
     }
 
     .other-sizes{
@@ -434,5 +344,9 @@ body{
         width: 290px;
         height: 328px;
         margin-left: 5vw;
+    }
+
+    .fragment{
+        width: 46px;
     }
 }

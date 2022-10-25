@@ -20,10 +20,10 @@ body{
 .game-frame{
     display: flex;
     flex-wrap: wrap;
-    width: 648px;
-    height: 715px;
+    width: 486px;
+    height: 516px;
     border: 2px solid;
-    margin: 0 0 0vh 20vw;
+    margin: 0 0 0vh 30vw;
 }
 
 .fragment{
@@ -49,7 +49,7 @@ body{
 
 .buttons-section{
     display: flex;
-    margin: 20px 0 10px 21vw;
+    margin: 20px 0 10px 27vw;
     gap: 5%;
 }
 
@@ -73,7 +73,7 @@ body{
 
 .moves-section{
     display: flex;
-    margin-left: 22vw;;
+    margin-left: 30vw;
     gap: 45px;
 }
 
@@ -88,7 +88,7 @@ body{
 
 .sizes{
     display: flex;
-    margin-left: 37vw;
+    margin-left: 40vw;;
 }
 
 .sizes>div{
@@ -101,7 +101,7 @@ body{
 }
 
 .other-sizes{
-    margin-left: 28vw;
+    margin-left: 32vw;
 }
 
 .other-sizes>ul{
@@ -135,8 +135,8 @@ body{
     .game-frame{
         display: flex;
         flex-wrap: wrap;
-        width: 648px;
-        height: 715px;
+        width: 486px;
+        height: 516px;
         border: 2px solid;
         margin: 0 0 0vh 20vw;
     }
@@ -236,7 +236,7 @@ body{
 
 @media (max-width: 906px){
     .game-frame{
-        margin-left: 10vw;
+        margin-left: 15vw;
     }
 
     .buttons-section{
@@ -260,52 +260,39 @@ body{
 
 @media (max-width: 770px){
     .game-frame{
-        margin-left: 5vw;
+        margin-left: 12vw;
     }
 }
 
 @media (max-width: 700px){
     .game-frame{
-        margin-left: 0vw;
+        margin-left: 12vw;
     }
 }
 
-@media (max-width: 655px){
-    .game-frame{
-        width: 600px;
-    }
 
-    .fragment{
-        width: 136px;
-    }
-}
-
-@media (max-width: 607px){
-    .game-frame{
-        width: 500px;
-        height: 536px;
+@media (max-width: 564px){
+    .buttons-section{
         margin-left: 5vw;
     }
 
-    .fragment{
-        width: 136px;
-        width: 112px;
-        height: 112px;
+    .game-frame{
+        margin-left: 5vw;
     }
 
-    .fragment>p{
-        margin-top: 17px;
-    }
-
-    .buttons-section{
+    .other-sizes{
         margin-left: 6vw;
+    }
+
+    .sizes{
+        margin-left: 30vw;
     }
 }
 
 @media (max-width: 535px){
 
     .buttons-section{
-        margin-left: 5vw;
+        margin-left: 8vw;
     }
 
     .buttons-section>button{
@@ -318,9 +305,9 @@ body{
     }
 
     .game-frame{
-        width: 443px;
-        height: 536px;
-        margin-left: 5vw;
+        width: 335px;
+        height: 407px;
+        margin-left: 15vw;
     }
 
     .fragment{
@@ -335,21 +322,6 @@ body{
 }
 
 @media (max-width: 487px){
-    .game-frame{
-        width: 408px;
-        height: 536px;
-        margin-left: 5vw;
-    }
-
-    .fragment{
-        width: 90px;
-        width: 90px;
-        height: 100px;
-    }
-
-    .other-sizes{
-        margin-left: 2vw;
-    }
 
     .other-sizes>ul{
         font-size: 20px;
@@ -361,16 +333,18 @@ body{
 }
 
 @media (max-width: 439px){
-    .game-frame{
-        width: 370px;
-        height: 536px;
-        margin-left: 5vw;
+    .buttons-section{
+        margin-left: 3vw;
     }
 
-    .fragment{
-        width: 80px;
-        height: 100px;
+    .game-frame{
+        margin-left: 8vw;
     }
+
+    .moves-section{
+        margin-left: 4vw;
+    }
+
 }
 
 
@@ -379,6 +353,7 @@ body{
 
     .buttons-section{
         width: 150px;
+        margin-left: 8vw;
     }
 
     .buttons-section>button{
@@ -386,16 +361,6 @@ body{
         height: 30px;
     }
 
-    .game-frame{
-        width: 300px;
-        height: 328px;
-        margin-left: 5vw;
-    }
-
-    .fragment{
-        width: 60px;
-        height: 60px;
-    }
 
     .fragment>p{
         font-size: 26px;
@@ -416,7 +381,7 @@ body{
     }
 
     .moves-section{
-        margin-left: 3vw;
+        margin-left: 6vw;
         width: 200px;
     }
 
@@ -429,10 +394,33 @@ body{
     }
 }
 
-@media (max-width: 322px){
+@media (max-width: 372px){
+    .game-frame{
+        margin-left: 1vw;
+    }
+}
+
+@media(max-width: 344px){
+
+    .game-frame{
+        width: 306px;
+    }
+    .fragment{
+        width: 90px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 325px){
+
     .game-frame{
         width: 290px;
         height: 328px;
         margin-left: 5vw;
+    }
+
+    .fragment{
+        width: 84px;
+        height: 90px;
     }
 }
